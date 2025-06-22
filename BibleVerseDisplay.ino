@@ -1,9 +1,9 @@
 // PROJECT   :Bible Verse Display (Summer Project)
 // PURPOSE   :Using work for the glory of God
 // AUTHOR    : N. Ketema
-//DATE       : 2025 06 06
+// DATE      : 2025 06 06
 // MCU       : 328P (Standalone)
-// REFERENCE : Works
+// STATUS    : Works
 
 #define verse_scroll A7  // potentiometer
 
@@ -12,16 +12,16 @@
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
-void setup (){
+void setup() {
   Serial.begin(9600);
-  lcd.begin(16,2);
+  lcd.begin(16, 2);
   delay(50);
-  lcd.setCursor(5,0);
+  lcd.setCursor(5, 0);
   lcd.print("Glory to God");
   lcd.clear();
 }
 
-const char* verses[]={ 
+const char* verses[] = {
   "John 3:16",
   "For God so loved",
 
@@ -64,11 +64,11 @@ const char* verses[]={
   "Romans 8:28",
   "All things work",
   "together for",
-  "good to those","who love God."
+  "good to those", "who love God."
 };
 
-int lastIndex = -1; 
-const int array_length = sizeof(verses)/sizeof(verses[0]);
+int lastIndex = -1;
+const int array_length = sizeof(verses) / sizeof(verses[0]);
 
 void loop() {
   int potValue = analogRead(verse_scroll);  // 0 to 1023
@@ -85,5 +85,5 @@ void loop() {
       lcd.print(verses[index + 1]);
     }
   }
-  delay(100); 
+  delay(100);
 }
